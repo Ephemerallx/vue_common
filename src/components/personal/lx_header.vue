@@ -1,22 +1,16 @@
 <template>
         <div class="top">
             <div class="right_top">
-                <a href="#/set" class="one"><span></span></a>
-                <a href="#/message" class="two"><span></span></a>
+                <a href="#/main/set" class="one"><span></span></a>
+                <a href="#/main/message" class="two"><span></span></a>
             </div>
             <div class="above">
                 <a href="#/main/register">登录/注册</a>
             </div>
             <div class="above_logined">
-                <div class="item_bock head_p">
-                    <div class="head_img" @click.stop="uploadHeadImg">
-                        <keep-alive>
-                        <img :src="userInfo.avatar" />
-                        <!-- <图片地址动态绑定-->
-                        </keep-alive>
-                    </div>
-                    <input type="file" accept="image/*" @change="handleFile" class="hiddenInput"/>
-                </div>
+                <a href="#/main/pMessage">
+                    <img src="../../assets/images/lx_img/b1.png" class="photo"/>
+                </a>
                 <span class="tel">155****6601</span>
                 <p>
                     <span class="grade"><img src="../../assets/images/lx_img/b1.png" class="sign" >普通会员</span>
@@ -29,31 +23,13 @@
 <script>
     export default {
         name: 'lx_header',
-        data() {
+        props:[],
+        data(){
             return {
-                userInfo: {
-                    avatar: './images/lx_img/b.png'
-                },
-                // 初始图片
-                keepAlive:true
+
             }
-        },
-        methods: {
-            uploadHeadImg: function () {
-                this.$el.querySelector('.hiddenInput').click()
-                // 获取文档中 class=”hiddenInput” 的元素。
-            },
-            handleFile: function (e) {
-                let $target = e.target || e.srcElement
-                let file = $target.files[0]
-                var reader = new FileReader()
-                reader.onload = (data) => {
-                    let res = data.target || data.srcElement
-                    this.userInfo.avatar = res.result
-                }
-                reader.readAsDataURL(file)
-            },
         }
+
     }
 </script>
 
@@ -63,6 +39,12 @@
         height: 1.4rem;
         background: url("../../assets/images/lx_img/bg.png") no-repeat;
         background-size: 100% 100%;
+    }
+    .photo{
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        margin: 0.3rem 0 0 0.2rem;
     }
     .right_top{
         width: 100%;
@@ -113,8 +95,8 @@
         color: white;
         font-weight: 400;
         position: relative;
-        top: -0.5rem;
-        left: 0.8rem;
+        top: -0.3rem;
+        left: 0.2rem;
     }
     .grade{
         font-size: 0.12rem;
@@ -142,8 +124,8 @@
     .above_logined p{
         width: 70%;
         position: relative;
-        top: -0.5rem;
-        left: 0.8rem;
+        top: -0.3rem;
+        left: 0.9rem;
     }
     .grade{
         font-size: 0.1rem;
@@ -157,17 +139,5 @@
         border-radius: 0.3rem 0.3rem;
         background-color:gainsboro;
         /*opacity: 0.3;*/
-    }
-    .item_bock {
-        height:0.5rem;
-        width: 0.5rem;
-        border-radius:50%;
-        margin: 0.2rem 0 0 0.2rem;
-    }
-    .head_img img{
-        width: 100%;
-    }
-    .hiddenInput{
-        display: none;
     }
 </style>

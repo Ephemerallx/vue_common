@@ -2,7 +2,7 @@
     <div class="wallet">
         <p class="blank"></p>
         <div class="wallet_bottom">
-            <a href="#/main/register">
+            <a href="#/main/myWallet">
                 <p>
                     <img src="../../assets/images/lx_img/wallet.png" alt="" class="wallet_logo">
                     <span class="my_wallet">我的钱包</span>
