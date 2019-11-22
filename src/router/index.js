@@ -16,6 +16,11 @@ import lx_secondary_coupon_three from "../components/personal/secondaryPage/lx_s
 import lx_secondary_coupon_four from "../components/personal/secondaryPage/lx_secondary_coupon_four";
 import lx_secondary_message from "../components/personal/secondaryPage/lx_secondary_message";
 import lx_secondary_pmessage from "../components/personal/secondaryPage/lx_secondary_pmessage";
+import lx_secondary_service_one from '../components/personal/wuyi/lx_secondary_service-one';
+import lx_secondary_service_two from '../components/personal/wuyi/lx_secondary_service-two';
+import lx_secondary_service_three from '../components/personal/wuyi/lx_secondary_service-three';
+import lx_secondary_service_four from '../components/personal/wuyi/lx_secondary_service-four';
+import lx_secondary_service_five from '../components/personal/wuyi/lx_secondary_service-five';
 
 Vue.use(VueRouter)
 let router = new VueRouter({
@@ -99,6 +104,26 @@ let router = new VueRouter({
         {
             path:'/main/coupon_cen',
             component: lx_secondary_coupon_four,
+        },
+        {
+            path:'/main/service_adviser',
+            component: lx_secondary_service_one,
+        },
+        {
+            path:'/main/service_discounts',
+            component: lx_secondary_service_two,
+        },
+        {
+            path:'/main/service_information',
+            component: lx_secondary_service_three,
+        },
+        {
+            path:'/main/service_collect',
+            component: lx_secondary_service_four,
+        },
+        {
+            path:'/main/service_history',
+            component: lx_secondary_service_five,
         }
 ],
 })

@@ -23,6 +23,7 @@
         data(){
             return {
                 flag:false,
+                // f:false,
                 datalist:
                     {
                         total:100,
@@ -30,12 +31,26 @@
                     }
             }
         },
+        props:["tt"],
         methods: {
             changeStyle(){
                 this.flag = !this.flag;
-
             }
-        }
+        },
+        // mounted() {
+        //     this.$eventBus.$on("change",(f)=>{
+        //         console.log(f);
+        //     })
+        // },
+        // methods: {
+        //     changeStyle(f){
+        //         this.flag = !this.flag;
+        //         this.f=!this.f;
+        //         this.$eventBus.$emit("change",f);
+        //         console.log(f);
+        //     }
+        // },
+
     }
 </script>
 
@@ -75,7 +90,6 @@
         width: 0.5rem;
         text-align: left;
         position: relative;
-        /*left: -0.5rem;*/
         font-size: 0.12rem;
     }
     .shower{

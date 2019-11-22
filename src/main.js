@@ -8,6 +8,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import gg from'../node_modules/element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 Vue.use(VueRouter)
+//事件总线: 用来注册公共的事件监听的对象叫做事件总线
+//创建一个vue实例，只用来监听事件，
+let eventBus = new Vue();
+//扩展vue类的实例对象
+Vue.prototype.$eventBus = eventBus;
+
 Vue.config.productionTip = false
 new Vue({
 	router,

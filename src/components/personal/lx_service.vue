@@ -3,8 +3,10 @@
         <h3>常用服务</h3>
         <ul>
             <li v-for="(n,index) in list" :key="index">
-                <img :src="n.img" alt="">
-                <p>{{n.message}}</p>
+                <a :href='n.url'>
+                    <img :src="n.img" alt="">
+                    <p>{{n.message}}</p>
+                </a>
             </li>
         </ul>
     </div>
@@ -17,24 +19,29 @@
             return{
                 list:[
                     {
-                        "img":"./images/lx_img/belong_service.png",
-                        "message":"专属客服"
+                        img:"./images/lx_img/belong_service.png",
+                        message:"专属客服",
+                        url:'#/main/service_adviser'
                     },
                     {
-                        "img":"./images/lx_img/discount.png",
-                        "message":"优惠活动"
+                        img:"./images/lx_img/discount.png",
+                        message:"优惠活动",
+                        url:'#/main/service_discounts'
                     },
                     {
-                        "img":"./images/lx_img/common_message.png",
-                        "message":"常用信息"
+                        img:"./images/lx_img/common_message.png",
+                        message:"常用信息",
+                        url:'#/main/service_information'
                     },
                     {
-                        "img":"./images/lx_img/collect .png",
-                        "message":"我的收藏"
+                        img:"./images/lx_img/collect .png",
+                        message:"我的收藏",
+                        url:'#/main/service_collect'
                     },
                     {
-                        "img":"./images/lx_img/history.png",
-                        "message":"浏览历史"
+                        img:"./images/lx_img/history.png",
+                        message:"浏览历史",
+                        url:'#/main/service_history'
                     }
                 ]
             }

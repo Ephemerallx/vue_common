@@ -2,7 +2,7 @@
     <div class="coupon">
             <ul>
                 <li>
-                    <a href="#/main/coupon_cen">
+                    <a href="#/main/coupon_dis">
                         <p>优惠券</p>
                         <p>领券</p>
                     </a>
