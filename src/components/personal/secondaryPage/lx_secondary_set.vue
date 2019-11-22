@@ -5,7 +5,7 @@
             <span class="set_text">设置</span>
         </p>
         <p class="account">
-            <a href="#/">
+            <a href="#/main/account">
                 <span>账号与安全</span>
                 <span></span>
             </a>
