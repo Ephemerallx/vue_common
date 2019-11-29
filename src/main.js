@@ -2,12 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import router from "./router"
-import ElementUI from "element-ui"
 import Axios from 'axios'
+import Vant from 'vant'
 
 Vue.prototype.$axios  = Axios
 
-Vue.use(ElementUI)
+Vue.use(Vant)
 Vue.use(VueRouter)
 //事件总线: 用来注册公共的事件监听的对象叫做事件总线
 //创建一个vue实例，只用来监听事件，
