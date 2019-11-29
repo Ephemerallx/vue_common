@@ -13,12 +13,12 @@
         </div>
         <div class="compons" v-for="(n,index) in list" :key="index">
             <div class="compons_left">
-                <p class="explain">{{n.opt}}</p>
-                <p class="time">{{n.datetime}}</p>
+                <p class="explain">{{n.ut_desc}}</p>
+<!--                <p class="time">{{n.datetime}}</p>-->
             </div>
             <div class="compons_right">
-                <p class="pesd">{{n.money}}</p>
-                <p class="term">{{n.condition}}</p>
+                <p class="pesd">￥{{n.ut_money}}</p>
+                <p class="term">{{n.ut_tiaojian}}</p>
             </div>
         </div>
     </div>
@@ -26,46 +26,97 @@
 
 <script>
     import { DropdownMenu, DropdownItem } from 'vant';
+    import axios from 'axios';
     export default {
         name: "lx_secondary_coupon_one",
         data() {
             return {
-                value1: 0,
-                value2: 'a',
-                value3:'d',
+                value1: 'a',
+                value2: 0,
+                value3:'e',
                 option1: [
-                    { text: '可使用', value: 0 },
-                    { text: '不可使用', value: 1 }
+                    { text: '全部', value: 'a' }
                 ],
                 option2: [
-                    { text: '全部', value: 'a' },
-                    { text: '参团', value: 'b' },
-                    { text: '机票', value: 'c' }
+                    { text: '价格由高到低', value: 0 },
+                    { text: '价格由低到高', value: 1 }
                 ],
                 option3: [
-                    { text: '默认排序', value: 'd' },
-                    { text: '即将排序', value: 'e' },
-                    { text: '金额排序', value: 'f' }
+                    { text: '可用', value: 'e' },
+                    { text: '不可用', value: 'f' }
                 ],
-                list:[
-                    {
-                        opt:'出境长线参团 限时加磅专属优惠券',
-                        datetime:'2019-11-16至2019-11-25',
-                        money:'￥500',
-                        condition:'满10000可用'
-                    },
-                    {
-                        opt:'出境长线参团 限时加磅专属优惠券',
-                        datetime:'2019-11-16至2019-11-25',
-                        money:'￥500',
-                        condition:'满10000可用'
-                    }
-                ]
+                list:[]
             }
         },
         components:{
             [DropdownMenu.name]:DropdownMenu,
             [DropdownItem.name]:DropdownItem
+        },
+        methods:{
+            change(){
+                // let a = this.$route.params.id;
+
+                let t =sessionStorage.getItem("ud_id");
+                // console.log(a);
+                // this.id=a;
+                // axios.get("http://10.35.167.10:3001/u_ticket")
+                // 只接收数据
+                console.log(this.option1[0].value)
+                if(this.value == 'a'){
+                    axios.get('http://10.35.167.69:8080/api/u_ticket/?ud_id='+t+'&status=5')
+                        .then(res => {
+                            console.log(res.data);
+                            this.list = res.data;
+                            console.log(this.list);
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
+                }else if(this.value == 0){
+                            axios.get("http://10.35.167.69:8080/api/u_ticket/?ud_id="+a+'&status=1')
+                                .then(res2 => {
+                                    console.log(res2.data);
+                                    this.list = res2.data.data;
+                                    console.log(this.list);
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        }else if(this.value==1){
+                            axios.get("http://10.35.167.69:8080/api/u_ticket/?ud_id="+a+'&status=2')
+                                .then(res3 => {
+                                    console.log(res3.data);
+                                    this.list = res3.data.data;
+                                    console.log(this.list);
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        }else if(this.value=='e'){
+                            axios.get("http://10.35.167.69:8080/api/u_ticket/?ud_id="+a+'&status=3')
+                                .then(res4 => {
+                                    console.log(res4.data);
+                                    this.list = res4.data.data;
+                                    console.log(this.list);
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        }else if(this.value=='f'){
+                            axios.get("http://10.35.167.69:8080/api/u_ticket/?ud_id="+a+'&status=4')
+                                .then(res5 => {
+                                    console.log(res5.data);
+                                    this.list = res5.data.data;
+                                    console.log(this.list);
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        }
+                    }
+        },
+        beforeMount() {
+            this.change();
         }
     }
 </script>

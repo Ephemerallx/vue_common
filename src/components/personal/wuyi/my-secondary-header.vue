@@ -19,7 +19,8 @@
         border-bottom: 0.01rem solid gainsboro;
         box-sizing: border-box;
         background-color: white;
-        position: relative;
+        /*position: fixed;*/
+        /*top: 0;*/
     }
     .my-secondary-header>a{
         display: inline-block;

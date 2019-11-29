@@ -4,8 +4,7 @@ import home from "../views/home"
 import destinate from "../views/destinate"
 import discover from "../views/discover"
 import my from "../views/my"
-import register from "../views/register"
-import login from "../views/login"
+
 import main from "../views/main"
 import lx_secondary_set from "../components/personal/secondaryPage/lx_secondary_set";
 import lx_secondary_order from "../components/personal/secondaryPage/lx_secondary_order";
@@ -36,14 +35,22 @@ let router = new VueRouter({
           redirect: '/main/home'
       },
 
-      {
-        path: '/main/register',
-        component:register,
-      },
-      {
-        path: '/main/login',
-        component:login,
-      },
+        {
+            path: '/main/register',
+            component: ()=> import ('../views/registers'),
+        },
+        {
+            path: '/main/forget',
+            component: ()=> import('../components/forget/forget'),
+        },
+        {
+            path: '/main/reset',
+            component: ()=> import('../components/forget/reset'),
+        },
+        {
+            path: '/main/login',
+            component: ()=> import('../views/login'),
+        },
       {
           path: '/main',
           component: main,
@@ -69,42 +76,84 @@ let router = new VueRouter({
                }
             ]
         },
+
+        // 我的二级页面
+        // {
+        //     path:'/main/set',
+        //     component: lx_secondary_set
+        // },
+        // {
+        //     path:'/main/message',
+        //     component: lx_secondary_message,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/pMessage',
+        //     component: lx_secondary_pmessage,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/order',
+        //     component: lx_secondary_order,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/myWallet',
+        //     component: lx_secondary_wallet,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/coupon_dis/:id',
+        //     component: lx_secondary_coupon_one,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/coupon_intel',
+        //     component: lx_secondary_coupon_two,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/coupon_bon',
+        //     component: lx_secondary_coupon_three,meta:{needLogin: true}
+        // },
+        // {
+        //     path:'/main/coupon_cen',
+        //     component: lx_secondary_coupon_four,meta:{needLogin: true}
+        // },
+
+
+        // 我的二级页面
         {
             path:'/main/set',
-            component: lx_secondary_set,
+            component: lx_secondary_set
         },
         {
             path:'/main/message',
-            component: lx_secondary_message,
+            component: lx_secondary_message
         },
         {
             path:'/main/pMessage',
-            component: lx_secondary_pmessage,
+            component: lx_secondary_pmessage
         },
         {
             path:'/main/order',
-            component: lx_secondary_order,
+            component: lx_secondary_order
         },
         {
             path:'/main/myWallet',
-            component: lx_secondary_wallet,
+            component: lx_secondary_wallet
         },
         {
-            path:'/main/coupon_dis',
-            component: lx_secondary_coupon_one,
+            path:'/main/coupon_dis/:id',
+            component: lx_secondary_coupon_one
         },
         {
             path:'/main/coupon_intel',
-            component: lx_secondary_coupon_two,
+            component: lx_secondary_coupon_two
         },
         {
             path:'/main/coupon_bon',
-            component: lx_secondary_coupon_three,
+            component: lx_secondary_coupon_three
         },
         {
             path:'/main/coupon_cen',
-            component: lx_secondary_coupon_four,
+            component: lx_secondary_coupon_four
         },
+        // 常用服务
         {
             path:'/main/service_adviser',
             component: lx_secondary_service_one,
@@ -124,26 +173,48 @@ let router = new VueRouter({
         {
             path:'/main/service_history',
             component: lx_secondary_service_five,
+        },
+
+        // 会员权益
+        {
+            path:'/main/memberone',
+            component: ()=> import ('../components/personal/member/memberone'),
+        },
+        {
+            path:'/main/membertwo',
+            component: ()=> import ('../components/personal/member/membertwo'),
+        },
+        {
+            path:'/main/memberthree',
+            component: ()=> import ('../components/personal/member/memberthree'),
+        },
+        {
+            path:'/main/memberfour',
+            component: ()=> import ('../components/personal/member/memberfour'),
+        },
+        // 三级页面
+        {
+            path:'/main/balance',
+            component:() => import('../components/personal/Level3Page/lx_Level3Page_myWallet')
         }
 ],
 })
 // 前置守卫,判断哪个需要登录
-router.beforeEach((to,from,next)=>{
-  if(to.meta.needLogin){
-	next()
-	window.console.log("请先登录")
-    //当页面需要登录的时候判断浏览器是否有sessionStorage
-    if(window.sessionStorage.data){
-		// 注意next()必须加
-      next()
-    }else{
-    // alert('session为空，请先登录')
-    //如果没有，让页面进入登录页
-      next('/login')
+router.beforeEach((to, from, next) => {
+    if (to.meta.needLogin) {
+        next()
+        window.console.log("请先登录")
+//当页面需要登录的时候判断浏览器是否有sessionStorage
+        if (window.sessionStorage.data) {
+// 注意next()必须加
+            next()
+        } else {
+// alert('session为空，请先登录')
+//如果没有，让页面进入登录页
+            next('/main/login')
+        }
+    } else {
+        next()
     }
-  }
-  else{
-    next()
-  }
 })
 export default router

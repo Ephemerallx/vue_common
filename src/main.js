@@ -3,9 +3,10 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import router from "./router"
 import ElementUI from "element-ui"
-// import 'iview/dist/styles/iview.css';
-import 'element-ui/lib/theme-chalk/index.css'
-// import gg from'../node_modules/element-ui/lib/theme-chalk/index.css'
+import Axios from 'axios'
+
+Vue.prototype.$axios  = Axios
+
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 //事件总线: 用来注册公共的事件监听的对象叫做事件总线

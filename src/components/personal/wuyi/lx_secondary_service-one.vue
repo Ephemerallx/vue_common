@@ -13,7 +13,9 @@
         <div class="footer">
             <p>当您进行预定参团、自由行等旅游产品后，我们将为您安排专属旅行顾问。</p>
             <h2>联系我们</h2>
-            <input class="phone" value="400 - 600 - 6666"/>
+            <div class="call_btn">
+                <a :href="'tel:'+tel"><span></span>400 - 600 - 6666</a>
+            </div>
         </div>
     </div>
 </template>
@@ -28,7 +30,9 @@
         data(){
             return{
                 head:"专属旅行顾问",
-                adviserPhone:""
+                adviserPhone:"",
+                msg:'',
+                tel:'400 - 600 - 6666'
             }
         }
     }
@@ -91,8 +95,35 @@
         color: #5C5C5C;
         line-height: 0.22rem;
     }
-    .footer>.phone{
-        color: #FF6C2E;
-        font-weight: 500;
+    /*.footer>.phone{*/
+    /*    color: #FF6C2E;*/
+    /*    font-weight: 500;*/
+    /*    font-size: 0.14rem;*/
+    /*}*/
+
+    .call_btn{
+        width: 90%;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        background:whitesmoke;
+        text-align: center;
+        margin:0.05rem auto;
+        border: 0.01rem solid gainsboro;
+        border-radius: 0.3rem 0.3rem;
+    }
+    .call_btn a{
+        font-size: 0.14rem;
+        color: red;
+        text-decoration: none;
+    }
+    .call_btn a span{
+        display: inline-block;
+        width: 0.4rem;
+        height: 0.4rem;
+        background: url("../../../assets/images/lx_img/telephone.png") no-repeat;
+        background-size: 80% 80%;
+        position: absolute;
+        top: 5.65rem;
+        left: 0.9rem;
     }
 </style>

@@ -2,7 +2,7 @@
     <div class="common_service">
         <h3>常用服务</h3>
         <ul>
-            <li v-for="(n,index) in list" :key="index">
+            <li v-for="(n,index) in list" :key="index" @click="showTravelers">
                 <a :href='n.url'>
                     <img :src="n.img" alt="">
                     <p>{{n.message}}</p>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         name: "lx_service",
         data(){
@@ -43,9 +44,22 @@
                         message:"浏览历史",
                         url:'#/main/service_history'
                     }
-                ]
+                ],
+                travelers:{}
+            }
+        },
+        methods:{
+            showTravelers(){
+                let s= sessionStorage.getItem("ud_id")
+                axios.get("http://10.35.167.69:8080/api/traveler/?ud_id="+s)
+                    .then(res => {
+                        console.log(res.data);
+                        this.travelers = res.data;
+                        alert(this.travelers.msg)
+                    });
             }
         }
+
     }
 </script>
 

@@ -5,17 +5,7 @@
                 <a href="#/main/message" class="two"><span></span></a>
             </div>
             <div class="above">
-                <a href="#/main/register">登录/注册</a>
-            </div>
-            <div class="above_logined">
-                <a href="#/main/pMessage">
-                    <img src="../../assets/images/lx_img/b1.png" class="photo"/>
-                </a>
-                <span class="tel">155****6601</span>
-                <p>
-                    <span class="grade"><img src="../../assets/images/lx_img/b1.png" class="sign" >普通会员</span>
-                    <a href=""><span class="vip_button"></span></a>
-                </p>
+                <a href="#/main/login">登录/注册</a>
             </div>
         </div>
 </template>
@@ -39,12 +29,6 @@
         height: 1.4rem;
         background: url("../../assets/images/lx_img/bg.png") no-repeat;
         background-size: 100% 100%;
-    }
-    .photo{
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50%;
-        margin: 0.3rem 0 0 0.2rem;
     }
     .right_top{
         width: 100%;
@@ -70,7 +54,7 @@
     .above{
         width:100%;
         text-align: center;
-        display: none;
+        /*display: none;*/
     }
     .above a{
         display: inline-block;
@@ -84,60 +68,10 @@
         margin-top: 0.4rem;
         z-index: 10;
     }
-    .above_logined{
-        width: 100%;
-        text-align: left;
-        font-size: 0;
-        /*display: none;*/
-    }
-    .tel{
-        font-size: 0.2rem;
-        color: white;
-        font-weight: 400;
-        position: relative;
-        top: -0.3rem;
-        left: 0.2rem;
-    }
-    .grade{
-        font-size: 0.12rem;
-        text-align: right;
-    }
-    .sign{
-        width: 0.15rem;
-        height:0.15rem;
-        border-radius: 50%;
-        position: absolute;
-        top: 0.08rem;
-        left: 0.05rem;
-    }
-    .vip_button{
-        display: inline-block;
-        width:0.7rem;
-        height: 0.18rem;
-        border-radius: 0.3rem 0.3rem;
-        background: url("../../assets/images/lx_img/vip_buttom.png") no-repeat;
-        background-size: 100% 100%;
-        position: relative;
-        left: 1rem;
-        top: 0.05rem;
-    }
     .above_logined p{
         width: 70%;
         position: relative;
         top: -0.3rem;
         left: 0.9rem;
-    }
-    .grade{
-        font-size: 0.1rem;
-        display: inline-block;
-        width: 0.8rem;
-        height: 0.2rem;
-        box-sizing: border-box;
-        padding: 0 0.15rem;
-        line-height: 0.2rem;
-        color:black;
-        border-radius: 0.3rem 0.3rem;
-        background-color:gainsboro;
-        /*opacity: 0.3;*/
     }
 </style>

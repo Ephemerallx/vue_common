@@ -11,7 +11,7 @@
             </a>
         </p>
         <p class="blank"></p>
-        <button class="exit" @click="selector">退出当前帐号
+        <button class="exit" v-if="flageset" @click="selector">退出当前帐号
             <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
         </button>
     </div>
@@ -20,29 +20,41 @@
 <script>
     import { ActionSheet } from 'vant';
     export default {
-         name: "lx_secondary_set",
-         data(){
-             return {
-                 show: false,
-                 actions: [
-                     { name: '确认' },
-                     { name: '取消' }
-                 ]
-             }
-         },
+        name: "lx_secondary_set",
+        data(){
+            return {
+                show: false,
+                flageset:false,
+                actions: [
+                    { name: '确认' },
+                    { name: '取消' }
+                ]
+            }
+        },
         components:{
             [ ActionSheet.name ]:ActionSheet
         },
-         methods: {
-             onSelect() {
-                 // 默认情况下，点击选项时不会自动关闭菜单
-                 // 可以通过 close-on-click-action 属性开启自动关闭
-                 this.show = false;
-             },
-             selector() {
-                 this.show = !this.show;
-             }
-         }
+        methods: {
+            onSelect() {
+// 默认情况下，点击选项时不会自动关闭菜单
+// 可以通过 close-on-click-action 属性开启自动关闭
+                this.show = false;
+                this.$router.push("/main/personal")
+            },
+            selector() {
+                this.show = !this.show;
+                window.sessionStorage.clear();
+
+            },
+            set(){
+                if(window.sessionStorage.data!=""){
+                    this.flageset=true
+                }
+            }
+        },
+        mounted() {
+            this.set()
+        }
     }
 </script>
 

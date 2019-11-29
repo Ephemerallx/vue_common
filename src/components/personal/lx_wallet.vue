@@ -9,8 +9,8 @@
                 <span class="synax" v-show="flag == true" @click="changeStyle"></span>
             </p>
             <div class="money">
-                <span>总资产</span><span class="total_money" v-show="flag == false">******</span><span class="hiden_money" v-show="flag == true">{{datalist.total.toFixed(2)}}</span>
-                <span class="balance">余额</span><span class="shower" v-show="flag == false">******</span><span class="hiden_shower" v-show="flag == true">{{datalist.acc.toFixed(2)}}</span>
+                <span>总资产</span><span class="total_money" v-show="flag == false">******</span><span class="hiden_money" v-show="flag == true">{{money}}</span>
+                <span class="balance">余额</span><span class="shower" v-show="flag == false">******</span><span class="hiden_shower" v-show="flag == true">{{money}}</span>
             </div>
             <a href="#/main/myWallet"><span class="arrows"></span></a>
         </div>
@@ -18,24 +18,29 @@
 </template>
 
 <script>
+    // import axios from 'axios';
     export default {
         name: "lx_wallet",
         data(){
             return {
                 flag:false,
                 // f:false,
-                datalist:
-                    {
-                        total:100,
-                        acc:100
-                    }
+                // myWallet: {},
+                money:localStorage.getItem("hiden_rice")
             }
         },
         props:["tt"],
         methods: {
             changeStyle(){
                 this.flag = !this.flag;
-            }
+            },
+            // getMoney(){
+            //     let s = sessionStorage.getItem("ud_id")
+            //     axios.get("http://10.35.167.69:8080/api/wallet/?ud_id="+s)
+            //         .then(() => {
+            //             this.$router.push('/main/myWallet/')
+            //         });
+            // }
         },
         // mounted() {
         //     this.$eventBus.$on("change",(f)=>{

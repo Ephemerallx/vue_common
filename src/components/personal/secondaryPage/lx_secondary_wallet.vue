@@ -12,18 +12,20 @@
             </p>
             <p class="hide_show">
                 <span class="total_money" v-show="flag == false">******</span>
-                <span class="hiden_money" v-show="flag == true">{{datalist.total.toFixed(2)}}</span>
+                <span class="hiden_money" v-show="flag == true" >{{money}}</span>
             </p>
         </div>
         <p class="blank"></p>
         <div class="main_money">
             <div class="main_for">
                 <span class="money"></span>
-                <p>
-                    <span class="assets">余额</span><br>
-                    <span class="totalMoney" v-show="flag == false">******</span>
-                    <span class="hidenMoney" v-show="flag == true">{{datalist.acc.toFixed(2)}}</span>
-                </p>
+                <a href="#/main/balance">
+                    <p>
+                        <span class="assets">余额</span><br>
+                        <span class="totalMoney" v-show="flag == false">******</span>
+                        <span class="hidenMoney" v-show="flag == true">{{money}}</span>
+                    </p>
+                </a>
             </div>
             <div class="main_for">
                 <span class="card"></span>
@@ -37,16 +39,15 @@
 </template>
 
 <script>
+    // import  axios from 'axios';
     export default {
         name: "lx_secondary_wallet",
         data() {
             return {
                 flag:false,
+                money:localStorage.getItem("hiden_rice")
                 // f:false,
-                datalist:{
-                    total:100,
-                    acc:100
-                }
+                // dataList:[]
             }
         },
         // props:["data","flag"],
@@ -62,8 +63,23 @@
                 // this.f=!this.f;
                 // this.$eventBus.$emit("change",f);
                 // console.log(f);
-            }
-        },
+            },
+            // getMoney(){
+            //     let a = this.$route.params.id;
+            //     console.log(a);
+            //     // axios.get("http://10.35.167.10:3001/u_ticket")
+            //     // 只接收数据
+            //     axios.get("http://10.35.167.69:8080/api/u_ticket/?ud_id="+a)
+            //         .then(res => {
+            //             console.log(res.data);
+            //             this.dataList = res.data.data;
+            //             console.log(this.dataList);
+            //         })
+            //         .catch(err => {
+            //             console.log(err)
+            //         })
+            // }
+        }
     }
 </script>
 
